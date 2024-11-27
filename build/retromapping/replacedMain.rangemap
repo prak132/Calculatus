@@ -1,0 +1,244 @@
+Symbol range map extraction starting
+Processing 1 files
+processing com/prak132/calculatus/Calc.java
+@|com/prak132/calculatus/Calc.java|8|30|com.prak132.calculatus|package|com.prak132.calculatus|(file)
+Class Start: com.prak132.calculatus.Calc
+   @|com/prak132/calculatus/Calc.java|574|580|String|class|java.lang.String
+   @|com/prak132/calculatus/Calc.java|581|586|MODID|field|com.prak132.calculatus.Calc|MODID|
+   @|com/prak132/calculatus/Calc.java|627|633|String|class|java.lang.String
+   @|com/prak132/calculatus/Calc.java|634|638|NAME|field|com.prak132.calculatus.Calc|NAME|
+   @|com/prak132/calculatus/Calc.java|683|689|String|class|java.lang.String
+   @|com/prak132/calculatus/Calc.java|690|697|VERSION|field|com.prak132.calculatus.Calc|VERSION|
+   Method Start: init(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+      @|com/prak132/calculatus/Calc.java|746|750|init|method|com.prak132.calculatus.Calc|init|(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+      @|com/prak132/calculatus/Calc.java|751|773|FMLInitializationEvent|class|net.minecraftforge.fml.common.event.FMLInitializationEvent
+      @|com/prak132/calculatus/Calc.java|774|779|event|param|com.prak132.calculatus.Calc|init|(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V|event|0
+      @|com/prak132/calculatus/Calc.java|791|797|System|class|java.lang.System
+      @|com/prak132/calculatus/Calc.java|798|801|out|field|java.lang.System|out
+      @|com/prak132/calculatus/Calc.java|802|809|println|method|java.io.PrintStream|println|(Ljava/lang/String;)V
+      @|com/prak132/calculatus/Calc.java|810|814|NAME|field|com.prak132.calculatus.Calc|NAME
+      @|com/prak132/calculatus/Calc.java|843|863|ClientCommandHandler|class|net.minecraftforge.client.ClientCommandHandler
+      @|com/prak132/calculatus/Calc.java|864|872|instance|field|net.minecraftforge.client.ClientCommandHandler|instance
+      @|com/prak132/calculatus/Calc.java|873|888|registerCommand|method|net.minecraft.command.CommandHandler|registerCommand|(Lnet/minecraft/command/ICommand;)Lnet/minecraft/command/ICommand;
+      @|com/prak132/calculatus/Calc.java|893|904|CalcCommand|class|com.prak132.calculatus.Calc.CalcCommand
+   Method End: init(Lnet/minecraftforge/fml/common/event/FMLInitializationEvent;)V
+   Class Start: com.prak132.calculatus.Calc.CalcCommand
+      Method Start: getCommandName()Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|1029|1043|getCommandName|method|net.minecraft.command.ICommand|getCommandName|()Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|1022|1028|String|class|java.lang.String
+      Method End: getCommandName()Ljava/lang/String;
+      Method Start: getCommandUsage(Lnet/minecraft/command/ICommandSender;)Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|1126|1141|getCommandUsage|method|net.minecraft.command.ICommand|getCommandUsage|(Lnet/minecraft/command/ICommandSender;)Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|1119|1125|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|1142|1178|net.minecraft.command.ICommandSender|class|net.minecraft.command.ICommandSender
+         @|com/prak132/calculatus/Calc.java|1179|1185|sender|param|com.prak132.calculatus.Calc.CalcCommand|getCommandUsage|(Lnet/minecraft/command/ICommandSender;)Ljava/lang/String;|sender|0
+      Method End: getCommandUsage(Lnet/minecraft/command/ICommandSender;)Ljava/lang/String;
+      Method Start: getRequiredPermissionLevel()I
+         @|com/prak132/calculatus/Calc.java|1278|1304|getRequiredPermissionLevel|method|net.minecraft.command.CommandBase|getRequiredPermissionLevel|()I
+      Method End: getRequiredPermissionLevel()I
+      Method Start: processCommand(Lnet/minecraft/command/ICommandSender;[Ljava/lang/String;)V
+         @|com/prak132/calculatus/Calc.java|1380|1394|processCommand|method|net.minecraft.command.ICommand|processCommand|(Lnet/minecraft/command/ICommandSender;[Ljava/lang/String;)V
+         @|com/prak132/calculatus/Calc.java|1395|1431|net.minecraft.command.ICommandSender|class|net.minecraft.command.ICommandSender
+         @|com/prak132/calculatus/Calc.java|1432|1438|sender|param|com.prak132.calculatus.Calc.CalcCommand|processCommand|(Lnet/minecraft/command/ICommandSender;[Ljava/lang/String;)V|sender|0
+         @|com/prak132/calculatus/Calc.java|1440|1446|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|1449|1453|args|param|com.prak132.calculatus.Calc.CalcCommand|processCommand|(Lnet/minecraft/command/ICommandSender;[Ljava/lang/String;)V|args|1
+         @|com/prak132/calculatus/Calc.java|1473|1477|args|param|com.prak132.calculatus.Calc.CalcCommand|processCommand|(Lnet/minecraft/command/ICommandSender;[Ljava/lang/String;)V|args|1
+         Field: Array Length, skipping
+         @|com/prak132/calculatus/Calc.java|1509|1520|sendMessage|method|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V
+         @|com/prak132/calculatus/Calc.java|1608|1614|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|1628|1634|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|1635|1639|join|method|java.lang.String|join|(Ljava/lang/CharSequence;[Ljava/lang/CharSequence;)Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|1645|1649|args|param|com.prak132.calculatus.Calc.CalcCommand|processCommand|(Lnet/minecraft/command/ICommandSender;[Ljava/lang/String;)V|args|1
+         @|com/prak132/calculatus/Calc.java|1651|1661|replaceAll|method|java.lang.String|replaceAll|(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|1725|1743|evaluateExpression|method|com.prak132.calculatus.Calc.CalcCommand|evaluateExpression|(Ljava/lang/String;)D
+         @|com/prak132/calculatus/Calc.java|1773|1786|DecimalFormat|class|java.text.DecimalFormat
+         @|com/prak132/calculatus/Calc.java|1803|1816|DecimalFormat|class|java.text.DecimalFormat
+         @|com/prak132/calculatus/Calc.java|1846|1857|sendMessage|method|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V
+         @|com/prak132/calculatus/Calc.java|1881|1887|format|method|java.text.NumberFormat|format|(D)Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|1926|1935|Exception|class|java.lang.Exception
+         @|com/prak132/calculatus/Calc.java|1957|1968|sendMessage|method|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V
+         @|com/prak132/calculatus/Calc.java|1983|1993|getMessage|method|java.lang.Throwable|getMessage|()Ljava/lang/String;
+      Method End: processCommand(Lnet/minecraft/command/ICommandSender;[Ljava/lang/String;)V
+      Method Start: evaluateExpression(Ljava/lang/String;)D
+         @|com/prak132/calculatus/Calc.java|2052|2070|evaluateExpression|method|com.prak132.calculatus.Calc.CalcCommand|evaluateExpression|(Ljava/lang/String;)D
+         @|com/prak132/calculatus/Calc.java|2071|2077|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|2078|2088|expression|param|com.prak132.calculatus.Calc.CalcCommand|evaluateExpression|(Ljava/lang/String;)D|expression|0
+         @|com/prak132/calculatus/Calc.java|2109|2119|expression|param|com.prak132.calculatus.Calc.CalcCommand|evaluateExpression|(Ljava/lang/String;)D|expression|0
+         @|com/prak132/calculatus/Calc.java|2120|2127|matches|method|java.lang.String|matches|(Ljava/lang/String;)Z
+         @|com/prak132/calculatus/Calc.java|2180|2204|IllegalArgumentException|class|java.lang.IllegalArgumentException
+         @|com/prak132/calculatus/Calc.java|2268|2278|expression|param|com.prak132.calculatus.Calc.CalcCommand|evaluateExpression|(Ljava/lang/String;)D|expression|0
+         @|com/prak132/calculatus/Calc.java|2281|2291|expression|param|com.prak132.calculatus.Calc.CalcCommand|evaluateExpression|(Ljava/lang/String;)D|expression|0
+         @|com/prak132/calculatus/Calc.java|2292|2299|replace|method|java.lang.String|replace|(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|2330|2345|parseExpression|method|com.prak132.calculatus.Calc.CalcCommand|parseExpression|(Ljava/lang/String;)D
+         @|com/prak132/calculatus/Calc.java|2346|2356|expression|param|com.prak132.calculatus.Calc.CalcCommand|evaluateExpression|(Ljava/lang/String;)D|expression|0
+      Method End: evaluateExpression(Ljava/lang/String;)D
+      Method Start: parseExpression(Ljava/lang/String;)D
+         @|com/prak132/calculatus/Calc.java|2393|2408|parseExpression|method|com.prak132.calculatus.Calc.CalcCommand|parseExpression|(Ljava/lang/String;)D
+         @|com/prak132/calculatus/Calc.java|2409|2415|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|2416|2426|expression|param|com.prak132.calculatus.Calc.CalcCommand|parseExpression|(Ljava/lang/String;)D|expression|0
+         @|com/prak132/calculatus/Calc.java|2442|2458|ExpressionParser|class|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser
+         @|com/prak132/calculatus/Calc.java|2472|2488|ExpressionParser|class|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser
+         @|com/prak132/calculatus/Calc.java|2489|2499|expression|param|com.prak132.calculatus.Calc.CalcCommand|parseExpression|(Ljava/lang/String;)D|expression|0
+         @|com/prak132/calculatus/Calc.java|2528|2533|parse|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parse|()D
+      Method End: parseExpression(Ljava/lang/String;)D
+      Method Start: sendMessage(Ljava/lang/String;Z)V
+         @|com/prak132/calculatus/Calc.java|2569|2580|sendMessage|method|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V
+         @|com/prak132/calculatus/Calc.java|2581|2587|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|2588|2595|message|param|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V|message|0
+         @|com/prak132/calculatus/Calc.java|2605|2612|isError|param|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V|isError|1
+         @|com/prak132/calculatus/Calc.java|2628|2642|IChatComponent|class|net.minecraft.util.IChatComponent
+         @|com/prak132/calculatus/Calc.java|2674|2681|isError|param|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V|isError|1
+         @|com/prak132/calculatus/Calc.java|2721|2738|ChatComponentText|class|net.minecraft.util.ChatComponentText
+         @|com/prak132/calculatus/Calc.java|2780|2792|setChatStyle|method|net.minecraft.util.IChatComponent|setChatStyle|(Lnet/minecraft/util/ChatStyle;)Lnet/minecraft/util/IChatComponent;
+         @|com/prak132/calculatus/Calc.java|2797|2806|ChatStyle|class|net.minecraft.util.ChatStyle
+         @|com/prak132/calculatus/Calc.java|2809|2817|setColor|method|net.minecraft.util.ChatStyle|setColor|(Lnet/minecraft/util/EnumChatFormatting;)Lnet/minecraft/util/ChatStyle;
+         @|com/prak132/calculatus/Calc.java|2818|2836|EnumChatFormatting|class|net.minecraft.util.EnumChatFormatting
+         @|com/prak132/calculatus/Calc.java|2837|2841|BLUE|field|net.minecraft.util.EnumChatFormatting|BLUE
+         @|com/prak132/calculatus/Calc.java|2861|2875|IChatComponent|class|net.minecraft.util.IChatComponent
+         @|com/prak132/calculatus/Calc.java|2897|2914|ChatComponentText|class|net.minecraft.util.ChatComponentText
+         @|com/prak132/calculatus/Calc.java|2915|2922|message|param|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V|message|0
+         @|com/prak132/calculatus/Calc.java|2949|2961|setChatStyle|method|net.minecraft.util.IChatComponent|setChatStyle|(Lnet/minecraft/util/ChatStyle;)Lnet/minecraft/util/IChatComponent;
+         @|com/prak132/calculatus/Calc.java|2966|2975|ChatStyle|class|net.minecraft.util.ChatStyle
+         @|com/prak132/calculatus/Calc.java|3011|3019|setColor|method|net.minecraft.util.ChatStyle|setColor|(Lnet/minecraft/util/EnumChatFormatting;)Lnet/minecraft/util/ChatStyle;
+         @|com/prak132/calculatus/Calc.java|3020|3038|EnumChatFormatting|class|net.minecraft.util.EnumChatFormatting
+         @|com/prak132/calculatus/Calc.java|3039|3042|RED|field|net.minecraft.util.EnumChatFormatting|RED
+         @|com/prak132/calculatus/Calc.java|3077|3094|setChatClickEvent|method|net.minecraft.util.ChatStyle|setChatClickEvent|(Lnet/minecraft/event/ClickEvent;)Lnet/minecraft/util/ChatStyle;
+         @|com/prak132/calculatus/Calc.java|3099|3129|net.minecraft.event.ClickEvent|class|net.minecraft.event.ClickEvent
+         @|com/prak132/calculatus/Calc.java|3171|3208|net.minecraft.event.ClickEvent.Action|class|net.minecraft.event.ClickEvent.Action
+         @|com/prak132/calculatus/Calc.java|3209|3224|SUGGEST_COMMAND|field|net.minecraft.event.ClickEvent.Action|SUGGEST_COMMAND
+         @|com/prak132/calculatus/Calc.java|3266|3273|message|param|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V|message|0
+         @|com/prak132/calculatus/Calc.java|3342|3359|setChatHoverEvent|method|net.minecraft.util.ChatStyle|setChatHoverEvent|(Lnet/minecraft/event/HoverEvent;)Lnet/minecraft/util/ChatStyle;
+         @|com/prak132/calculatus/Calc.java|3364|3394|net.minecraft.event.HoverEvent|class|net.minecraft.event.HoverEvent
+         @|com/prak132/calculatus/Calc.java|3436|3473|net.minecraft.event.HoverEvent.Action|class|net.minecraft.event.HoverEvent.Action
+         @|com/prak132/calculatus/Calc.java|3474|3483|SHOW_TEXT|field|net.minecraft.event.HoverEvent.Action|SHOW_TEXT
+         @|com/prak132/calculatus/Calc.java|3529|3546|ChatComponentText|class|net.minecraft.util.ChatComponentText
+         @|com/prak132/calculatus/Calc.java|3662|3675|appendSibling|method|net.minecraft.util.IChatComponent|appendSibling|(Lnet/minecraft/util/IChatComponent;)Lnet/minecraft/util/IChatComponent;
+         @|com/prak132/calculatus/Calc.java|3716|3723|message|param|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V|message|0
+         @|com/prak132/calculatus/Calc.java|3724|3734|startsWith|method|java.lang.String|startsWith|(Ljava/lang/String;)Z
+         @|com/prak132/calculatus/Calc.java|3766|3772|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|3783|3790|message|param|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V|message|0
+         @|com/prak132/calculatus/Calc.java|3791|3796|split|method|java.lang.String|split|(Ljava/lang/String;I)[Ljava/lang/String;
+         @|com/prak132/calculatus/Calc.java|3849|3866|ChatComponentText|class|net.minecraft.util.ChatComponentText
+         @|com/prak132/calculatus/Calc.java|3911|3925|IChatComponent|class|net.minecraft.util.IChatComponent
+         @|com/prak132/calculatus/Calc.java|3948|3965|ChatComponentText|class|net.minecraft.util.ChatComponentText
+         @|com/prak132/calculatus/Calc.java|4001|4013|setChatStyle|method|net.minecraft.util.IChatComponent|setChatStyle|(Lnet/minecraft/util/ChatStyle;)Lnet/minecraft/util/IChatComponent;
+         @|com/prak132/calculatus/Calc.java|4018|4027|ChatStyle|class|net.minecraft.util.ChatStyle
+         @|com/prak132/calculatus/Calc.java|4063|4071|setColor|method|net.minecraft.util.ChatStyle|setColor|(Lnet/minecraft/util/EnumChatFormatting;)Lnet/minecraft/util/ChatStyle;
+         @|com/prak132/calculatus/Calc.java|4072|4090|EnumChatFormatting|class|net.minecraft.util.EnumChatFormatting
+         @|com/prak132/calculatus/Calc.java|4091|4097|YELLOW|field|net.minecraft.util.EnumChatFormatting|YELLOW
+         @|com/prak132/calculatus/Calc.java|4132|4149|setChatClickEvent|method|net.minecraft.util.ChatStyle|setChatClickEvent|(Lnet/minecraft/event/ClickEvent;)Lnet/minecraft/util/ChatStyle;
+         @|com/prak132/calculatus/Calc.java|4154|4184|net.minecraft.event.ClickEvent|class|net.minecraft.event.ClickEvent
+         @|com/prak132/calculatus/Calc.java|4226|4263|net.minecraft.event.ClickEvent.Action|class|net.minecraft.event.ClickEvent.Action
+         @|com/prak132/calculatus/Calc.java|4264|4279|SUGGEST_COMMAND|field|net.minecraft.event.ClickEvent.Action|SUGGEST_COMMAND
+         @|com/prak132/calculatus/Calc.java|4398|4415|setChatHoverEvent|method|net.minecraft.util.ChatStyle|setChatHoverEvent|(Lnet/minecraft/event/HoverEvent;)Lnet/minecraft/util/ChatStyle;
+         @|com/prak132/calculatus/Calc.java|4420|4450|net.minecraft.event.HoverEvent|class|net.minecraft.event.HoverEvent
+         @|com/prak132/calculatus/Calc.java|4492|4529|net.minecraft.event.HoverEvent.Action|class|net.minecraft.event.HoverEvent.Action
+         @|com/prak132/calculatus/Calc.java|4530|4539|SHOW_TEXT|field|net.minecraft.event.HoverEvent.Action|SHOW_TEXT
+         @|com/prak132/calculatus/Calc.java|4585|4602|ChatComponentText|class|net.minecraft.util.ChatComponentText
+         @|com/prak132/calculatus/Calc.java|4712|4725|appendSibling|method|net.minecraft.util.IChatComponent|appendSibling|(Lnet/minecraft/util/IChatComponent;)Lnet/minecraft/util/IChatComponent;
+         @|com/prak132/calculatus/Calc.java|4801|4818|ChatComponentText|class|net.minecraft.util.ChatComponentText
+         @|com/prak132/calculatus/Calc.java|4836|4843|message|param|com.prak132.calculatus.Calc.CalcCommand|sendMessage|(Ljava/lang/String;Z)V|message|0
+         @|com/prak132/calculatus/Calc.java|4872|4881|Minecraft|class|net.minecraft.client.Minecraft
+         @|com/prak132/calculatus/Calc.java|4882|4894|getMinecraft|method|net.minecraft.client.Minecraft|getMinecraft|()Lnet/minecraft/client/Minecraft;
+         @|com/prak132/calculatus/Calc.java|4897|4906|thePlayer|field|net.minecraft.client.Minecraft|thePlayer
+         @|com/prak132/calculatus/Calc.java|4907|4921|addChatMessage|method|net.minecraft.command.ICommandSender|addChatMessage|(Lnet/minecraft/util/IChatComponent;)V
+      Method End: sendMessage(Ljava/lang/String;Z)V
+      Class Start: com.prak132.calculatus.Calc.CalcCommand.ExpressionParser
+         @|com/prak132/calculatus/Calc.java|5013|5016|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos|
+         @|com/prak132/calculatus/Calc.java|5047|5049|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch|
+         @|com/prak132/calculatus/Calc.java|5077|5083|String|class|java.lang.String
+         @|com/prak132/calculatus/Calc.java|5084|5088|expr|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|expr|
+         Method Start: ExpressionParser(Ljava/lang/String;)V
+            @|com/prak132/calculatus/Calc.java|5110|5126|ExpressionParser|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ExpressionParser|(Ljava/lang/String;)V
+            @|com/prak132/calculatus/Calc.java|5127|5133|String|class|java.lang.String
+            @|com/prak132/calculatus/Calc.java|5134|5138|expr|param|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ExpressionParser|(Ljava/lang/String;)V|expr|0
+            @|com/prak132/calculatus/Calc.java|5163|5167|expr|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|expr
+            @|com/prak132/calculatus/Calc.java|5170|5174|expr|param|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ExpressionParser|(Ljava/lang/String;)V|expr|0
+         Method End: ExpressionParser(Ljava/lang/String;)V
+         Method Start: nextChar()V
+            @|com/prak132/calculatus/Calc.java|5216|5224|nextChar|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|nextChar|()V
+            @|com/prak132/calculatus/Calc.java|5245|5247|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|5253|5256|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos
+            @|com/prak132/calculatus/Calc.java|5259|5263|expr|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|expr
+            @|com/prak132/calculatus/Calc.java|5264|5270|length|method|java.lang.CharSequence|length|()I
+            @|com/prak132/calculatus/Calc.java|5276|5280|expr|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|expr
+            @|com/prak132/calculatus/Calc.java|5281|5287|charAt|method|java.lang.CharSequence|charAt|(I)C
+            @|com/prak132/calculatus/Calc.java|5288|5291|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos
+         Method End: nextChar()V
+         Method Start: parse()D
+            @|com/prak132/calculatus/Calc.java|5340|5345|parse|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parse|()D
+            @|com/prak132/calculatus/Calc.java|5366|5374|nextChar|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|nextChar|()V
+            @|com/prak132/calculatus/Calc.java|5405|5420|parseExpression|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseExpression|()D
+            @|com/prak132/calculatus/Calc.java|5444|5447|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos
+            @|com/prak132/calculatus/Calc.java|5450|5454|expr|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|expr
+            @|com/prak132/calculatus/Calc.java|5455|5461|length|method|java.lang.CharSequence|length|()I
+            @|com/prak132/calculatus/Calc.java|5497|5513|RuntimeException|class|java.lang.RuntimeException
+         Method End: parse()D
+         Method Start: parseExpression()D
+            @|com/prak132/calculatus/Calc.java|5653|5668|parseExpression|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseExpression|()D
+            @|com/prak132/calculatus/Calc.java|5700|5709|parseTerm|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseTerm|()D
+            @|com/prak132/calculatus/Calc.java|5764|5767|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|5818|5827|parseTerm|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseTerm|()D
+            @|com/prak132/calculatus/Calc.java|5921|5924|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|5975|5984|parseTerm|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseTerm|()D
+         Method End: parseExpression()D
+         Method Start: parseTerm()D
+            @|com/prak132/calculatus/Calc.java|6144|6153|parseTerm|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseTerm|()D
+            @|com/prak132/calculatus/Calc.java|6185|6196|parseFactor|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseFactor|()D
+            @|com/prak132/calculatus/Calc.java|6251|6254|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|6307|6318|parseFactor|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseFactor|()D
+            @|com/prak132/calculatus/Calc.java|6414|6417|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|6470|6481|parseFactor|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseFactor|()D
+            @|com/prak132/calculatus/Calc.java|6570|6589|ArithmeticException|class|java.lang.ArithmeticException
+            @|com/prak132/calculatus/Calc.java|6729|6732|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|6785|6796|parseFactor|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseFactor|()D
+            @|com/prak132/calculatus/Calc.java|6885|6904|ArithmeticException|class|java.lang.ArithmeticException
+         Method End: parseTerm()D
+         Method Start: parseFactor()D
+            @|com/prak132/calculatus/Calc.java|7141|7152|parseFactor|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseFactor|()D
+            @|com/prak132/calculatus/Calc.java|7177|7180|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|7194|7205|parseFactor|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseFactor|()D
+            @|com/prak132/calculatus/Calc.java|7229|7232|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|7247|7258|parseFactor|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseFactor|()D
+            @|com/prak132/calculatus/Calc.java|7324|7327|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos
+            @|com/prak132/calculatus/Calc.java|7349|7352|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|7398|7401|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos
+            @|com/prak132/calculatus/Calc.java|7431|7446|parseExpression|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseExpression|()D
+            @|com/prak132/calculatus/Calc.java|7475|7478|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|7511|7514|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos
+            @|com/prak132/calculatus/Calc.java|7563|7579|RuntimeException|class|java.lang.RuntimeException
+            @|com/prak132/calculatus/Calc.java|7673|7675|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|7686|7688|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|7700|7702|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|7741|7743|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|7754|7756|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|7768|7770|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|7779|7787|nextChar|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|nextChar|()V
+            @|com/prak132/calculatus/Calc.java|7827|7830|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos
+            @|com/prak132/calculatus/Calc.java|7868|7884|RuntimeException|class|java.lang.RuntimeException
+            @|com/prak132/calculatus/Calc.java|7957|7963|Double|class|java.lang.Double
+            @|com/prak132/calculatus/Calc.java|7964|7975|parseDouble|method|java.lang.Double|parseDouble|(Ljava/lang/String;)D
+            @|com/prak132/calculatus/Calc.java|7976|7980|expr|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|expr
+            @|com/prak132/calculatus/Calc.java|7981|7990|substring|method|java.lang.String|substring|(II)Ljava/lang/String;
+            @|com/prak132/calculatus/Calc.java|8006|8009|pos|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|pos
+            @|com/prak132/calculatus/Calc.java|8084|8100|RuntimeException|class|java.lang.RuntimeException
+            @|com/prak132/calculatus/Calc.java|8134|8136|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|8209|8212|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|8259|8270|parseFactor|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|parseFactor|()D
+            @|com/prak132/calculatus/Calc.java|8298|8302|Math|class|java.lang.Math
+            @|com/prak132/calculatus/Calc.java|8303|8306|pow|method|java.lang.Math|pow|(DD)D
+         Method End: parseFactor()D
+         Method Start: eat(I)Z
+            @|com/prak132/calculatus/Calc.java|8408|8411|eat|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z
+            @|com/prak132/calculatus/Calc.java|8416|8425|charToEat|param|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z|charToEat|0
+            @|com/prak132/calculatus/Calc.java|8452|8454|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|8463|8471|nextChar|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|nextChar|()V
+            @|com/prak132/calculatus/Calc.java|8495|8497|ch|field|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|ch
+            @|com/prak132/calculatus/Calc.java|8501|8510|charToEat|param|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|eat|(I)Z|charToEat|0
+            @|com/prak132/calculatus/Calc.java|8534|8542|nextChar|method|com.prak132.calculatus.Calc.CalcCommand.ExpressionParser|nextChar|()V
+         Method End: eat(I)Z
+      Class End  : com.prak132.calculatus.Calc.CalcCommand.ExpressionParser
+   Class End  : com.prak132.calculatus.Calc.CalcCommand
+Class End  : com.prak132.calculatus.Calc
+endProcessing com/prak132/calculatus/Calc.java
+

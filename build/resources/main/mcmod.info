@@ -1,0 +1,13 @@
+[
+{
+  "modid": "calculatus",
+  "name": "Calculatus",
+  "description": "Client side mod which allows you to evaluate mathematical expressions in chat. Usage: /calc <expression>. Supports basic math operations including addition, subtraction, division, multiplication, exponentiation, parenthesis, and modulo.",
+  "version": "1.0",
+  "mcversion": "1.8.9",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["prak132"],
+  "logoFile": "assets/calculatus/logo.png"
+}
+]

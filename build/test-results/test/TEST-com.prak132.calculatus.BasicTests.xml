@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.prak132.calculatus.BasicTests" tests="14" skipped="0" failures="0" errors="0" timestamp="2024-11-27T23:06:01" hostname="Prakhar.local" time="0.014">
+  <properties/>
+  <testcase name="testMismatchedParentheses" classname="com.prak132.calculatus.BasicTests" time="0.005"/>
+  <testcase name="testParenthesesAndComplexOperations" classname="com.prak132.calculatus.BasicTests" time="0.001"/>
+  <testcase name="testTrailingCharacters" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <testcase name="testDecimalNumbers" classname="com.prak132.calculatus.BasicTests" time="0.001"/>
+  <testcase name="testIncompleteExpression1" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <testcase name="testIncompleteExpression2" classname="com.prak132.calculatus.BasicTests" time="0.001"/>
+  <testcase name="testBasicArithmetic" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <testcase name="testDivisionByZero" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <testcase name="testInvalidCharacters" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <testcase name="testModuloExpressions" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <testcase name="testExponentiation" classname="com.prak132.calculatus.BasicTests" time="0.001"/>
+  <testcase name="testComplexExpressions" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <testcase name="testNegativeNumbers" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <testcase name="testOrderOfOperations" classname="com.prak132.calculatus.BasicTests" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
