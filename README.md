@@ -1,5 +1,5 @@
 <h1 align="center">
-  Calculatus: Evalute mathematical expressions
+  Calculatus: Math In Minecraft Chat
 </h1>
 
 ## What it does
