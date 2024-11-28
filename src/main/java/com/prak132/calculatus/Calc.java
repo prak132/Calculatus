@@ -14,7 +14,7 @@ import java.text.DecimalFormat;
 @Mod(modid = Calc.MODID, name = Calc.NAME, version = Calc.VERSION, clientSideOnly = true)
 public class Calc {
     public static final String MODID = "calculatus";
-    public static final String NAME = "Calculator Mod";
+    public static final String NAME = "Calculatus";
     public static final String VERSION = "1.0";
 
     @Mod.EventHandler
@@ -47,7 +47,16 @@ public class Calc {
             }
             String expression = String.join(" ", args).replaceAll("\\s+", "");
             try {
-                double result = evaluateExpression(expression);
+                int x = (int) Math.floor(Minecraft.getMinecraft().thePlayer.posX);
+                int y = (int) Math.floor(Minecraft.getMinecraft().thePlayer.posY);
+                int z = (int) Math.floor(Minecraft.getMinecraft().thePlayer.posZ);
+                /*
+                float yaw = Minecraft.getMinecraft().thePlayer.rotationYaw % 360;
+                if (yaw < 0) yaw += 360;
+                if (yaw > 180) yaw -= 360;
+                float pitch = Minecraft.getMinecraft().thePlayer.rotationPitch;
+                */
+                double result = evaluateExpression(expression, x, y, z);
                 DecimalFormat formatter = new DecimalFormat("#,###.##");
                 sendMessage("Result: " + formatter.format(result), false);
             } catch (Exception e) {
@@ -55,11 +64,14 @@ public class Calc {
             }
         }
 
-        private double evaluateExpression(String expression) {
-            if (!expression.matches("^[0-9+\\-*/().^%]+$")) {
+        private double evaluateExpression(String expression, int x, int y, int z) {
+            if (!expression.matches("^[0-9+\\-*/().^%xyz]+$")) {
                 throw new IllegalArgumentException("Invalid characters in expression");
             }
-            expression = expression.replace("^", "^");
+            expression = expression.replace("^", "^")
+                    .replaceAll("(?i)x", String.valueOf(x))
+                    .replaceAll("(?i)y", String.valueOf(y))
+                    .replaceAll("(?i)z", String.valueOf(z));
             return parseExpression(expression);
         }
 
@@ -125,7 +137,7 @@ public class Calc {
                 nextChar();
                 double x = parseExpression();
                 if (pos < expr.length()) {
-                    throw new RuntimeException("Invalid expression: unexpected characters at end");
+                    throw new RuntimeException("Invalid expression at position " + pos + ": '" + expr.substring(pos) + "'");
                 }
                 return x;
             }
