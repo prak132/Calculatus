@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
 import java.text.DecimalFormat;
+import java.util.List;
 
 @Mod(modid = Calc.MODID, name = Calc.NAME, version = Calc.VERSION, clientSideOnly = true)
 public class Calc {
@@ -42,26 +43,60 @@ public class Calc {
         @Override
         public void processCommand(net.minecraft.command.ICommandSender sender, String[] args) {
             if (args.length == 0) {
-                sendMessage("Usage: /calc <expression>", false);
+                sendMessage("Usage: /calc <expression>, /calc history, or /calc clear", true);
                 return;
             }
+
+            if (args[0].equalsIgnoreCase("clear")) {
+                CalculationHistory.clearHistory();
+                sendMessage("Calculation history cleared.", true);
+                return;
+            }
+
+            if (args[0].equalsIgnoreCase("history")) {
+                List<String> history = CalculationHistory.getHistory();
+                if (history.isEmpty()) {
+                    sendMessage("No calculations in history.", true);
+                } else {
+                    for (int i = 0; i < history.size(); i++) {
+                        sendMessage((i + 1) + ": " + history.get(i), false);
+                    }
+                }
+                return;
+            }
+
             String expression = String.join(" ", args).replaceAll("\\s+", "");
             try {
                 int x = (int) Math.floor(Minecraft.getMinecraft().thePlayer.posX);
                 int y = (int) Math.floor(Minecraft.getMinecraft().thePlayer.posY);
                 int z = (int) Math.floor(Minecraft.getMinecraft().thePlayer.posZ);
-                /*
-                float yaw = Minecraft.getMinecraft().thePlayer.rotationYaw % 360;
-                if (yaw < 0) yaw += 360;
-                if (yaw > 180) yaw -= 360;
-                float pitch = Minecraft.getMinecraft().thePlayer.rotationPitch;
-                */
                 double result = evaluateExpression(expression, x, y, z);
                 DecimalFormat formatter = new DecimalFormat("#,###.##");
-                sendMessage("Result: " + formatter.format(result), false);
+                CalculationHistory.addEntry(expression + " = " + formatter.format(result));
+                sendMessage(expression + " = " + formatter.format(result), false);
             } catch (Exception e) {
-                sendMessage("Error: " + e.getMessage(), true);
+                String suggestion = suggestFix(expression, e.getMessage());
+                sendMessage("Error: " + e.getMessage() + (suggestion.isEmpty() ? "" : " Did you mean: " + suggestion + "?"), true);
             }
+        }
+
+
+        private String suggestFix(String expression, String errorMessage) {
+            if (errorMessage.contains("Division by zero")) {
+                return expression.replaceAll("/0(\\D|$)", "/1$1");
+            }
+            else if (errorMessage.contains("Unexpected character")) {
+                return expression.replaceAll("[^0-9+\\-*/().^%xyz]", "");
+            }
+            else if (errorMessage.contains("Incomplete expression")) {
+                char lastChar = expression.isEmpty() ? '\0' : expression.charAt(expression.length() - 1);
+                if (Character.isDigit(lastChar) || lastChar == ')') {
+                    return expression + "+0";
+                } else {
+                    return expression + "0";
+                }
+            }
+            return expression;
         }
 
         private double evaluateExpression(String expression, int x, int y, int z) {
@@ -81,43 +116,50 @@ public class Calc {
         }
 
         private void sendMessage(String message, boolean isError) {
-            IChatComponent baseComponent;
-            if (isError) {
-                baseComponent = new ChatComponentText("§b[CALCMOD] ")
-                        .setChatStyle(new ChatStyle().setColor(EnumChatFormatting.BLUE));
-                IChatComponent errorComponent = new ChatComponentText(message)
-                        .setChatStyle(new ChatStyle()
-                                .setColor(EnumChatFormatting.RED)
-                                .setChatClickEvent(new net.minecraft.event.ClickEvent(
-                                        net.minecraft.event.ClickEvent.Action.SUGGEST_COMMAND,
-                                        message
-                                ))
-                                .setChatHoverEvent(new net.minecraft.event.HoverEvent(
-                                        net.minecraft.event.HoverEvent.Action.SHOW_TEXT,
-                                        new ChatComponentText("Click to copy error")
-                                ))
-                        );
-                baseComponent.appendSibling(errorComponent);
-            } else if (message.startsWith("Result: ")) {
-                String[] parts = message.split("Result: ", 2);
-                baseComponent = new ChatComponentText("§b[CALCMOD] " + parts[0]);
-                IChatComponent resultComponent = new ChatComponentText(parts[1])
-                        .setChatStyle(new ChatStyle()
-                                .setColor(EnumChatFormatting.YELLOW)
-                                .setChatClickEvent(new net.minecraft.event.ClickEvent(
-                                        net.minecraft.event.ClickEvent.Action.SUGGEST_COMMAND,
-                                        parts[1]
-                                ))
-                                .setChatHoverEvent(new net.minecraft.event.HoverEvent(
-                                        net.minecraft.event.HoverEvent.Action.SHOW_TEXT,
-                                        new ChatComponentText("Click to copy")
-                                ))
-                        );
-                baseComponent.appendSibling(resultComponent);
-            } else {
-                baseComponent = new ChatComponentText("§b[CALCMOD] " + message);
+            try {
+                IChatComponent baseComponent;
+                if (isError) {
+                    baseComponent = new ChatComponentText("§b[CCM] ")
+                            .setChatStyle(new ChatStyle().setColor(EnumChatFormatting.BLUE));
+                    IChatComponent errorComponent = new ChatComponentText(message)
+                            .setChatStyle(new ChatStyle()
+                                    .setColor(EnumChatFormatting.RED)
+                                    .setChatClickEvent(new net.minecraft.event.ClickEvent(
+                                            net.minecraft.event.ClickEvent.Action.SUGGEST_COMMAND,
+                                            message
+                                    ))
+                                    .setChatHoverEvent(new net.minecraft.event.HoverEvent(
+                                            net.minecraft.event.HoverEvent.Action.SHOW_TEXT,
+                                            new ChatComponentText("Click to copy error")
+                                    ))
+                            );
+                    baseComponent.appendSibling(errorComponent);
+                } else {
+                    String[] parts = message.split(" = ", 2);
+                    String expression = parts.length > 0 ? parts[0] : "Unknown Expression";
+                    String result = parts.length > 1 ? parts[1] : "Unknown Result";
+                    baseComponent = new ChatComponentText("§b[CCM] " + expression);
+                    IChatComponent resultComponent = new ChatComponentText(" = " + result + " [COPY]")
+                            .setChatStyle(new ChatStyle()
+                                    .setColor(EnumChatFormatting.YELLOW)
+                                    .setChatClickEvent(new net.minecraft.event.ClickEvent(
+                                            net.minecraft.event.ClickEvent.Action.SUGGEST_COMMAND,
+                                            result
+                                    ))
+                                    .setChatHoverEvent(new net.minecraft.event.HoverEvent(
+                                            net.minecraft.event.HoverEvent.Action.SHOW_TEXT,
+                                            new ChatComponentText("Click to copy result")
+                                    ))
+                            );
+                    baseComponent.appendSibling(resultComponent);
+                }
+                Minecraft.getMinecraft().thePlayer.addChatMessage(baseComponent);
+            } catch (Exception e) {
+                Minecraft.getMinecraft().thePlayer.addChatMessage(
+                        new ChatComponentText("§c[CCM] Failed to send message: " + e.getMessage())
+                );
+                e.printStackTrace();
             }
-            Minecraft.getMinecraft().thePlayer.addChatMessage(baseComponent);
         }
 
         static class ExpressionParser {
@@ -223,3 +265,4 @@ public class Calc {
         }
     }
 }
+
