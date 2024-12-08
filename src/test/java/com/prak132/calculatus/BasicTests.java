@@ -26,6 +26,25 @@ public class BasicTests {
     }
 
     @Test
+    public void testExtraNumbers() {
+        String expression = "2m + 1";
+        expression = expression.replaceAll("(?i)k", "* 1000")
+                .replaceAll("(?i)m", "* 1000000")
+                .replaceAll("(?i)b", "* 1000000000")
+                .replaceAll("(?i)t", "* 1000000000000");
+        Calc.CalcCommand.ExpressionParser parser = new Calc.CalcCommand.ExpressionParser(expression);
+        assertEquals(2000001.0, parser.parse(), 0.001);
+        String expression2 = "2t + 1";
+        expression2 = expression2.replaceAll("(?i)k", "* 1000")
+                .replaceAll("(?i)m", "* 1000000")
+                .replaceAll("(?i)b", "* 1000000000")
+                .replaceAll("(?i)t", "* 1000000000000");
+        Calc.CalcCommand.ExpressionParser parser2 = new Calc.CalcCommand.ExpressionParser(expression2);
+        assertEquals(2000000000001.0, parser2.parse(), 0.001);
+    }
+
+
+    @Test
     public void testExponentiation() {
         Calc.CalcCommand.ExpressionParser parser1 = new Calc.CalcCommand.ExpressionParser("2^3");
         assertEquals(8.0, parser1.parse(), 0.001);
