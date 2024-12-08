@@ -13,7 +13,7 @@ Calculatus is a Forge mod for Minecraft 1.8.9 that enabled you to evaluate mathe
 * `/calc clear`: Clear the history of expressions you have evaluated.
 
 ## Why this is better
-* I do unit testing.
+* It is unit tested.
 
 ## How to install
 * Click on latest releases and drag the jar file into your mods folder
