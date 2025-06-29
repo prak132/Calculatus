@@ -1,10 +1,7 @@
 package com.prak132.calculatus;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.ChatStyle;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.IChatComponent;
+import net.minecraft.util.*;
 import net.minecraftforge.client.ClientCommandHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -18,7 +15,7 @@ import java.util.Map;
 public class Calc {
     public static final String MODID = "calculatus";
     public static final String NAME = "Calculatus";
-    public static final String VERSION = "1.0.3";
+    public static final String VERSION = "1.0.4";
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
@@ -73,6 +70,17 @@ public class Calc {
                 int y = (int) Math.floor(Minecraft.getMinecraft().thePlayer.posY);
                 int z = (int) Math.floor(Minecraft.getMinecraft().thePlayer.posZ);
                 double result = evaluateExpression(expression, x, y, z);
+                
+                // Check for overflow conditions
+                if (Double.isInfinite(result)) {
+                    sendMessage("Error: Number overflow - result is too large to represent", true);
+                    return;
+                }
+                if (Double.isNaN(result)) {
+                    sendMessage("Error: Invalid calculation result (NaN)", true);
+                    return;
+                }
+                
                 DecimalFormat formatter = new DecimalFormat("#,###.##");
                 CalculationHistory.addEntry(expression + " = " + formatter.format(result));
                 sendMessage(expression + " = " + formatter.format(result), false);
@@ -82,13 +90,15 @@ public class Calc {
             }
         }
 
-
         private String suggestFix(String expression, String errorMessage) {
             if (errorMessage.contains("Division by zero")) {
                 return expression.replaceAll("/0(\\D|$)", "/1$1");
             }
+            else if (errorMessage.contains("Modulo by zero")) {
+                return expression.replaceAll("%0(\\D|$)", "%1$1");
+            }
             else if (errorMessage.contains("Unexpected character")) {
-                return expression.replaceAll("[^0-9+\\-*/().^%xyz]", "");
+                return expression.replaceAll("[^0-9+\\-*/().^%xyzkmbt]", "");
             }
             else if (errorMessage.contains("Incomplete expression")) {
                 char lastChar = expression.isEmpty() ? '\0' : expression.charAt(expression.length() - 1);
@@ -98,22 +108,38 @@ public class Calc {
                     return expression + "0";
                 }
             }
-            return expression;
+            else if (errorMessage.contains("Mismatched parentheses")) {
+                long openCount = expression.chars().filter(ch -> ch == '(').count();
+                long closeCount = expression.chars().filter(ch -> ch == ')').count();
+                if (openCount > closeCount) {
+                    StringBuilder sb = new StringBuilder(expression);
+                    for (int i = 0; i < (openCount - closeCount); i++) {
+                        sb.append(')');
+                    }
+                    return sb.toString();
+                }
+            }
+            return "";
         }
 
         private double evaluateExpression(String expression, int x, int y, int z) {
             if (!expression.matches("^[0-9+\\-*/().^%xyzkmbt]+$")) {
                 throw new IllegalArgumentException("Invalid characters in expression");
             }
+
+            Map<String, Double> variables = new HashMap<>();
+            variables.put("x", (double) x);
+            variables.put("y", (double) y);
+            variables.put("z", (double) z);
+
             expression = expression.replace("^", "^")
-                    .replaceAll("(?i)x", String.valueOf(x))
-                    .replaceAll("(?i)y", String.valueOf(y))
-                    .replaceAll("(?i)z", String.valueOf(z))
-                    .replaceAll("(?i)k", "* 1000")
-                    .replaceAll("(?i)m", "* 1000000")
-                    .replaceAll("(?i)b", "* 1000000000")
-                    .replaceAll("(?i)t", "* 1000000000000");
-            return parseExpression(expression);
+                    .replaceAll("(?i)k(?![a-z])", "* 1000")
+                    .replaceAll("(?i)m(?![a-z])", "* 1000000")
+                    .replaceAll("(?i)b(?![a-z])", "* 1000000000")
+                    .replaceAll("(?i)t(?![a-z])", "* 1000000000000");
+
+            ExpressionParser parser = new ExpressionParser(expression, variables);
+            return parser.parse();
         }
 
         private double parseExpression(String expression) {
@@ -216,7 +242,13 @@ public class Calc {
                 for (;;) {
                     if (eat('*')) {
                         double nextFactor = parseFactor();
+                        if (Math.abs(x) > 1e150 || Math.abs(nextFactor) > 1e150) {
+                            throw new ArithmeticException("Potential overflow in multiplication");
+                        }
                         x *= nextFactor;
+                        if (Double.isInfinite(x)) {
+                            throw new ArithmeticException("Multiplication resulted in overflow (infinity)");
+                        }
                     }
                     else if (eat('/')) {
                         double nextFactor = parseFactor();
@@ -260,7 +292,17 @@ public class Calc {
                     throw new RuntimeException("Unexpected character: " + (char) ch);
                 }
                 while (eat('^')) {
-                    x = Math.pow(x, parseFactor());
+                    double exponent = parseFactor();
+                    if (Math.abs(x) > 1e10 && Math.abs(exponent) > 10) {
+                        throw new ArithmeticException("Potential overflow in exponentiation: base=" + x + ", exponent=" + exponent);
+                    }
+                    x = Math.pow(x, exponent);
+                    if (Double.isInfinite(x)) {
+                        throw new ArithmeticException("Exponentiation resulted in overflow (infinity)");
+                    }
+                    if (Double.isNaN(x)) {
+                        throw new ArithmeticException("Exponentiation resulted in invalid number (NaN)");
+                    }
                 }
                 return x;
             }
