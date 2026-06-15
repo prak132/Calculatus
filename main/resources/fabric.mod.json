@@ -1,0 +1,27 @@
+{
+	"schemaVersion": 1,
+	"id": "calculatus",
+	"version": "${version}",
+	"name": "Calculatus",
+	"description": "Evaluate math expressions in chat!",
+	"authors": [
+		"prak132"
+	],
+	"contact": {
+		"sources": "https://github.com/prak132/Calculatus"
+	},
+	"license": "MIT",
+	"icon": "assets/calculatus/logo.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"com.prak132.calculatus.Calc"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.15.0",
+		"minecraft": ">=1.21-",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
