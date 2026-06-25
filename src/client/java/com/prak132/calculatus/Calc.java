@@ -1,61 +1,66 @@
 package com.prak132.calculatus;
 
 import net.fabricmc.api.ClientModInitializer;
+import net.fabricmc.api.ModInitializer;
+import static net.fabricmc.fabric.api.client.command.v2.ClientCommands.literal;
+import static net.fabricmc.fabric.api.client.command.v2.ClientCommands.argument;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
-import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
-import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.HoverEvent;
-import net.minecraft.network.chat.ClickEvent;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.Style;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.MutableComponent;
-
 import com.mojang.brigadier.arguments.StringArgumentType;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
+import java.util.HashMap;
 import java.util.Map;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 
-public class Calc implements ClientModInitializer {
+public class Calc implements ModInitializer, ClientModInitializer {
+
     public static final String MODID = "calculatus";
-    public static final String NAME = "Calculatus";
-    public static final String VERSION = "1.0.4";
+
+    @Override
+    public void onInitialize() {
+        // Common initialization if any
+    }
 
     @Override
     public void onInitializeClient() {
-        System.out.println(NAME + " client initialized!");
-
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
-            dispatcher.register(ClientCommandManager.literal("calc")
+            dispatcher.register(literal("calc")
                 .executes(context -> {
-                    sendMessage(context.getSource(), "Usage: /calc <expression>, /calc history, or /calc clear", true);
+                    sendMessage(net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource.class.cast(context.getSource()), "Usage: /calc <expression> OR /calc history", true);
                     return 1;
                 })
-                .then(ClientCommandManager.literal("clear")
+                .then(literal("clear")
                     .executes(context -> {
                         CalculationHistory.clearHistory();
-                        sendMessage(context.getSource(), "Calculation history cleared.", true);
+                        sendMessage(net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource.class.cast(context.getSource()), "Calculation history cleared.", false);
                         return 1;
                     }))
-                .then(ClientCommandManager.literal("history")
+                .then(literal("history")
                     .executes(context -> {
                         List<String> history = CalculationHistory.getHistory();
                         if (history.isEmpty()) {
-                            sendMessage(context.getSource(), "No calculations in history.", true);
+                            sendMessage(net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource.class.cast(context.getSource()), "History is empty.", true);
                         } else {
-                            for (int i = 0; i < history.size(); i++) {
-                                sendMessage(context.getSource(), (i + 1) + ": " + history.get(i), false);
+                            sendMessage(net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource.class.cast(context.getSource()), "Calculation History:", false);
+                            for (String entry : history) {
+                                sendMessage(net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource.class.cast(context.getSource()), entry, false);
                             }
                         }
                         return 1;
                     }))
-                .then(ClientCommandManager.argument("expression", StringArgumentType.greedyString())
+                .then(argument("expression", StringArgumentType.greedyString())
                     .executes(context -> {
-                        String rawExpr = StringArgumentType.getString(context, "expression");
-                        processExpression(context.getSource(), rawExpr);
+                        String expression = StringArgumentType.getString(context, "expression");
+                        processExpression(net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource.class.cast(context.getSource()), expression);
                         return 1;
                     }))
             );
